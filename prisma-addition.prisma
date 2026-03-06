@@ -1,0 +1,20 @@
+// ADD THIS MODEL to your existing prisma/schema.prisma file
+// (add it at the bottom, after the Session model)
+
+model PriceConfig {
+  id           String   @id @default(cuid())
+  shop         String
+  productId    String
+  variantId    String?
+  basePrice    Float    @default(15.0)
+  unit         String   @default("sqm")
+  minPrice     Float    @default(0)
+  unitLabel    String   @default("m")
+  labelLength  String   @default("Length")
+  labelWidth   String   @default("Width")
+  enabled      Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([shop, productId])
+}

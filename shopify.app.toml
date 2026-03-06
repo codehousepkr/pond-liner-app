@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+client_id = "81389e548fd90ec4ee08d6c8d41a1f31"
+name = "pond-liner-app"
+application_url = "https://pond-liner-app-production.up.railway.app"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-04"
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks"
+
+[app_proxy]
+url = "https://pond-liner-app-production.up.railway.app/proxy"
+subpath = "dimension-price"
+prefix = "apps"
+
+[access_scopes]
+scopes = "read_products,write_products,read_draft_orders,write_draft_orders"
+
+[auth]
+redirect_urls = [
+  "https://pond-liner-app-production.up.railway.app/auth/callback",
+  "https://pond-liner-app-production.up.railway.app/auth/shopify/callback",
+  "https://pond-liner-app-production.up.railway.app/api/auth/callback"
+]
